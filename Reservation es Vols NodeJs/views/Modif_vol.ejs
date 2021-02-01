@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Modif_vol.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <title>Modification du vol</title>
+    <script>
+                    
+             function convert(str) {
+           var date = new Date(str),
+             mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+             day = ("0" + date.getDate()).slice(-2);
+           return [date.getFullYear(), mnth, day].join("-");
+         }
+     
+         
+         
+         
+         
+                  
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark" style="background-color: #1592E6;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <img src="/logo.png">
+        </div>
+        </nav>
+    </header>   
+    <div class="space"></div>
+    <div class="firstPart">
+        <div class="formPart">
+          <form method="post"  action="/updatevol">
+            <div>
+                <label for="villeDepart"> Ville départ : </label>
+                <select name="villeDepart" class="villeDepart">
+                    <option value="<%= data[0].villeDepart %>" hidden selected><%= data[0].villeDepart %></option>
+                    <option value="safi"> Safi </option>
+                    <option value="casablanca"> Casablanca </option>
+                    <option value="tanger"> Tanger </option>
+                    <option value="marrakech"> Marrakech </option>
+                    <option value="agadir"> Agadir </option>
+                </select>
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="villeArrivee"> Ville départ : </label>
+                <select name="villeArrivee" class="villeArrivee">
+                    <option value="<%= data[0].villeArrivee %>" hidden selected><%= data[0].villeArrivee %></option>
+                    <option value="safi"> Safi </option>
+                    <option value="casablanca"> Casablanca </option>
+                    <option value="tanger"> Tanger </option>
+                    <option value="marrakech"> Marrakech </option>
+                    <option value="agadir"> Agadir </option>
+                </select>
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="dateDepart"> Date départ : </label>
+                <input type="hidden" name="id" value="<%= data[0].id %>" type="text">
+                <input name="dateDepart" value="<%= data[0].dateDepart %>" type="date" name="dateDepart" id="dateDepart">
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="dateArrivee"> Date arrivée : </label>
+                <input name="dateArrivee" value="<%= data[0].dateArrivee %>" type="date" name="dateArrivee" id="dateArrivee">
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="heureDepart"> Heure départ : </label>
+                <input name="heureDepart" value="<%= data[0].heureDepart %>" type="time" name="heureDepart" id="heureDepart">
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="heureArrivee"> Heure arrivée : </label>
+                <input name="heureArrivee" value="<%= data[0].heureArrivee %>" type="time" name="heureArrivee" id="heureArrivee">
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="nombrePlaces"> Nombre de places : </label>
+                <input name="nbrPlaces" value="<%= data[0].nbrPlaces %>" type="number" name="nombrePlaces" id="nombrePlaces">
+                <p style="color:red;">  </p>
+            </div>
+            <div>
+                <label for="villeEscale"> Ville d'escale : </label>
+                <input name="escale" value="<%= data[0].escale %>" type="text" name="villeEscale" id="villeEscale">
+                <p style="color:red;">  </p>
+            </div>
+           
+            
+            <div>
+                <button type="submit" name="Modifier"> Modifier </button> 
+            </div> 
+          </form>
+        </div>
+        <div class="pictPart">
+            <img src="/traveler.svg" alt="Image">
+        </div>
+    </div>
+    <div class="space"></div>
+    <div class="retour">
+        <a href="Admin">
+            <button><img src="/retour.svg" alt="retour" width="40px" height="40px"></button>
+        </a>
+    </div>
+</body>
+</html>

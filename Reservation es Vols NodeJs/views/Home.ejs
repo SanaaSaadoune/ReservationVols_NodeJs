@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Home.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <title>Home</title>
+</head>
+<body>
+    <header>
+          <nav class="navbar navbar-dark" style="background-color: #1592E6;">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <img src="logo.png">
+            </div>
+          </nav>
+    </header>
+    <section>
+        <div class="Container" > 
+            <h3> Rechercher. Réserver. Voyagez.</h3>
+            <form method="post" class="formReservation" id="search" class="section">
+                <div class="section-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="booking-form">
+                                <form>
+                                    <div class="row no-margin">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <span class="form-label">D'où partez-vous?</span>
+                                                <select name="villedep" style="border-style: none; margin-top:10px" for="form-select" aria-label="Default select example">
+                                                    <option hidden selected>Select ville</option>
+                                                    <option value="safi">Safi</option>
+                                                    <option value="casablanca">Casablanca</option>
+                                                    <option value="marrakech">Marrakech</option>
+                                                    <option value="tanger">Tanger</option>
+                                                    <option value="agadir">Agadir</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <span class="form-label">Où allez-vous?</span>
+                                                <select name="villearr" style="border-style: none; margin-top:10px" for="form-select" aria-label="Default select example">
+                                                    <option hidden selected>Select ville</option>
+                                                    <option value="safi">Safi</option>
+                                                    <option value="casablanca">Casablanca</option>
+                                                    <option value="marrakech">Marrakech</option>
+                                                    <option value="tanger">Tanger</option>
+                                                    <option value="agadir">Agadir</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row no-margin">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <span class="form-label">Départ le :</span>
+                                                        <input name="datedep" id="dateDepart" class="form-control" style="font-size: 16px" id="departDate" type="date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <span class="form-label">Arrivée le :</span>
+                                                        <input id="datearr" class="form-control" style="font-size: 16px" type="date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <span class="form-label">Heure de départ :</span>
+                                                        <input class="form-control" type="time" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <span class="form-label">Voyageurs</span>
+                                                        <input type="number"class="form-control" value="1" min="1" max="20" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" style="float: right;">
+                                            <div class="form-btn">
+                                                <button type="submit" class="submit-btn">Rechercher</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+<div id="formVol">
+        <!-- <div  class="formVol">
+            
+                <table>
+                    <tr>
+                        <td>
+                            <img src="depart.png">
+                        </td>
+                        <td >
+                            <h2> 03 Mars </h2>
+                            <p> Casablanca </p>
+                        </td>
+                        <td >
+                            22h30
+                        </td>
+                        <td class="nombre">
+                            <b>15/20 </b>  voyageurs
+                        </td>
+                        <td class="escale"> 
+                            Escale : -
+                        </td>
+                    </tr>
+                    <tr class="ligne2">
+                        <td>
+                            <img src="retour.png">
+                        </td>
+                        <td >
+                            <h2> 03 Mars </h2>
+                            <p> Casablanca </p>
+                        </td>
+                        <td >
+                            22h30
+                        </td>
+                        <td class="nombre">
+                            <b>15/20 </b>  voyageurs
+                        </td>
+                        <td class="escale"> 
+                            Escale : -
+                        </td>
+                    </tr>
+                </table>
+                <a href="Reservation.html"> <input type="button" class="btnReserver" value="Réserver" >  </a>
+            
+        </div> -->
+    </div>
+
+    </section>
+    <div class="espace"></div>
+    <div class="espace"></div>
+    <footer>
+        <div class="footer1">
+                <div class="block">  
+                        <img src="logo.png" class="logo" alt="logo">
+                        <p> Suivez-nous sur les réseaux sociaux</p>
+                        <a><img id="facebook" src="facebook.png" alt="facebook" ></a>
+                        <a ><img src="twitt.png" alt="twitter" ></a>
+                        <a><img src="linkedin-in.png" alt="linkedin" ></a>
+                </div>
+                <div class="block"> 
+                        <strong>QUICK LINKS</strong>
+                        <p>HOME</p>
+                        <p>ABOUT US</p>
+                        <p>CITY GUIDE</p>
+                        <p>BLOG</p>
+                        <p>FAQ's</p>
+                </div>
+                <div class="block">
+                        <strong>CONTACT US</strong>
+                        <p>Feel free to get in touch with us via phone or send<br> us a message</p>
+                        <div class="contact">
+                        <p><strong>Volini</strong></p>
+                        </div>
+                </div>
+        </div> 
+        <div class="copy"> 
+            <p> @Copyright 2021. All Right Reserved </p >
+        </div>      
+    </footer>
+
+    <script>
+
+$(document).ready(function(){
+    $("form#search").on('submit', function(e){
+        e.preventDefault();
+        var villedep = $('select[name=villedep]').val();
+        var villearr = $('select[name=villearr]').val();
+        var datedep = $('input[name=datedep]').val();
+        var data ={
+        "villeDepart": villedep,
+    "villeArrivee": villearr,
+    "dateDepart": datedep
+    }
+        $.ajax({
+            type: 'post',
+            url: '/searchvols',
+            data: data,
+            dataType: 'json'
+        })
+        .done(function(data){
+            document.getElementById("formVol").innerHTML = "";
+            data.forEach(function (vol) {
+                // console.log(vol.nbrPlaces)
+                // var table = document.createElement("TABLE");
+                // var tr1 = document.createElement("TR");
+                // var tr2 = document.createElement("TR");
+
+                // var tr1_td1 = document.createElement("TD");
+                // var tr1_td2 = document.createElement("TD");
+                // var tr1_td3 = document.createElement("TD");
+                // var tr1_td4 = document.createElement("TD");
+                // var tr1_td5 = document.createElement("TD");
+
+                // var img1 = document.createElement("IMG");
+                // img1.src = "depart.png";
+
+                // var td1_h2 = document.createElement("h2");
+
+                
+                
+                document.getElementById("formVol").innerHTML += '<div class="espace"></div><div  class="formVol"><table><tr><td><img src="depart.png"></td><td><h2 class="datedep"> '+convert(vol.dateDepart)+' </h2><p> '+vol.villeDepart+' </p></td><td >'+vol.heureDepart+'</td><td class="nombre"><b>'+vol.nbrPlaces+' </b>  places</td><td class="escale">  Escale : '+vol.escale+'</td></tr><tr class="ligne2"><td><img src="retour.png"></td><td ><h2 class=datearr> '+convert(vol.dateArrivee)+' </h2><p> '+vol.villeArrivee+' </p></td><td >  '+vol.heureArrivee+'</td><td class="nombre"> <b>'+vol.nbrPlaces+' </b>  places </td>  <td class="escale">   Escale : '+vol.escale+' </td> </tr> </table><a href="addreservs/'+vol.id+'&'+vol.nbrPlaces+'"> <input type="button" class="btnReserver" value="Réserver" >  </a></div>';
+            });
+            
+
+   
+
+
+        });
+    });
+});
+    </script>
+
+    <script>
+        function dateTime() {
+            var today = new Date();
+            var dd = today.getDate() + 1;
+
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            today = yyyy + '-' + mm + '-' + dd;
+            console.log(typeof (today));
+            document.getElementById('datearr').min = today
+            return document.getElementById('dateDepart').min = today;
+        }
+        dateTime()
+    </script>
+
+<script>
+             
+        
+             function convert(str) {
+      var date = new Date(str),
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2);
+      return [date.getFullYear(), mnth, day].join("-");
+    }
+    
+    
+              </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="DashboardAdmin.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+            <nav class="navbar navbar-dark" style="background-color: #1592E6;">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <img src="logo.png">
+            </div>
+            </nav>
+    </header>
+    <div class="space"> </div>
+    <div class="Image1"><img src="travel.svg" alt="photo" width="400px" height="300px"> </div>
+    <h2> Gestion des vols </h2>
+    <div class="space"> </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: center;" scope="col">Ville de départ</th>
+            <th style="text-align: center;" scope="col">Ville d'arrivée</th>
+            <th style="text-align: center;" scope="col">Date départ</th>
+            <th style="text-align: center;" scope="col">Date arrivée</th>
+            <th style="text-align: center;" scope="col">Heure départ</th>
+            <th style="text-align: center;" scope="col">Heure arrivée</th>
+            <th style="text-align: center;" scope="col">Nombre de places</th>
+            <th style="text-align: center;" scope="col">Escale</th>
+            <th style="text-align: center;" scope="col" >Modifier le vol</th>
+            <th style="text-align: center;"scope="col" >Supprimer le vol</th>
+          </tr>
+        </thead> 
+        <tbody>
+          <% data.forEach(function (vol) { %>
+          <tr>
+            
+            <td style="text-align: center;"><%= vol.villeDepart %></td>
+            <td style="text-align: center;"><%= vol.villeArrivee %></td>
+           
+            <td class="datedep" style="text-align: center;"><%= vol.dateDepart %> </td>
+            <td class="datearr" style="text-align: center;"><%= vol.dateArrivee %></td>
+            <td style="text-align: center;"><%= vol.heureDepart %></td>
+            <td style="text-align: center;"><%= vol.heureArrivee %></td>
+            <td style="text-align: center;"><%= vol.nbrPlaces %></td>
+            <td style="text-align: center;"><%= vol.escale %></td>
+            <td style="text-align: center;">
+                <a href="/updatevol/<%= vol.id %>">
+                    <button><img src="modif.svg" width="30px" height="30px" alt="Modifier"></button> 
+                </a>
+            </td>
+            <td style="text-align: center;">
+                <a href="deletevol/<%= vol.id %>">
+                    <button><img src="delete.svg" width="30px" height="30px" alt="Supprimer"></button> 
+                </a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <div class="divAdd">
+          <a href="/addvol">
+          <button class="btnAdd"> <img src="plus.png" alt="add" width="20px" height="20px"> Ajouter un vol </button>
+          </a>
+      </div>
+      <div class="space"> </div>
+
+      <script>
+             
+        function convert(str) {
+      var date = new Date(str),
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2);
+      return [date.getFullYear(), mnth, day].join("-");
+    }
+
+    for(let i=0;i<document.getElementsByClassName('datedep').length ; i++){
+      document.getElementsByClassName('datedep')[i].innerHTML = convert(document.getElementsByClassName('datedep')[i].textContent);
+
+      document.getElementsByClassName('datearr')[i].innerHTML = convert(document.getElementsByClassName('datearr')[i].textContent);
+      
+    }
+    
+    
+    
+              </script>
+</body>
+</html>
