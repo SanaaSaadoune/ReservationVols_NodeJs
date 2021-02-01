@@ -1,4 +1,5 @@
 const reservation = require("../models/reservationmodel.js");
+const Vol = require("../models/volmodel.js");
 
 const nodemailer = require("nodemailer");
 const fs = require('fs')
@@ -28,6 +29,8 @@ exports.AddReservation = (req, res) => {
     
   });
 
+  
+
   // Save Vol in the database
   reservation.AddReservation(reservationPost, (err, data) => {
     if (err)
@@ -36,46 +39,53 @@ exports.AddReservation = (req, res) => {
           err.message || "Some error occurred while creating the Post."
       });
     else{
-      async function main() {
-        // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-    // let testAccount = await nodemailer.createTestAccount();
+      Vol.ShowVol( reservationPost.idVol,
+        (err, data) =>{
+          if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving posts."
+      });
+      
+    async function main() {
   
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // true for 465, false for other ports
-      auth: {
-        user: "voliniinfos@gmail.com", // generated ethereal user
-        pass: "volini123", // generated ethereal password
-      },
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: "voliniinfos@gmail.com", // generated ethereal user
+          pass: "volini123", // generated ethereal password
+        },
+      });
+   // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Volini 👻" <voliniinfos@gmail.com>', // sender address
+        to: reservationPost.email, // list of receivers
+        subject: "Confirmation de reservation !", // Subject line
+        text: "Reserved !", // plain text body
+        html: "Bonjour <b> "+reservationPost.nom + " "+reservationPost.prenom +" </b><br><p>Voici les informations de votre reservation :<br>villeDepart : "+data[0].villeDepart+"<br>villeArrivee : "+data[0].villeArrivee+"<br>dateDepart : "+data[0].dateDepart+"<br>dateArrivee : "+data[0].dateArrivee+"<br>heureDepart : "+data[0].heureDepart+"<br>heureArrivee : "+data[0].heureArrivee+"<br>nbrPlaces : "+data[0].nbrPlaces+"<br>escale : "+data[0].escale+" </p>", // html body
+      });
+      console.log("Message sent: %s", info.messageId);
+      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+       // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", "test");
+      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+          }
+          main();
+          
+        
     });
-  
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-      from: '"Volini 👻" <voliniinfos@gmail.com>', // sender address
-      to: reservationPost.email, // list of receivers
-      subject: "Reservation", // Subject line
-      text: "Reserved !", // plain text body
-      html: "<b>Reserved !</b>", // html body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-  
-    // Preview only available when sending through an Ethereal account
-    console.log("Preview URL: %s", "test");
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-        }
-        main();
+
+
+      
         const pathing = path.join(__dirname, "./infos.txt")
 
         fs.appendFileSync(pathing, JSON.stringify(reservationPost)+"\n", "UTF-8", {flags: "a+"});
 
         res.writeHead(301,
-          {Location: 'http://paypal.com'}
-        );
+          {Location: 'http://paypal.com/'}
+          );
         res.end();
     } 
   });
